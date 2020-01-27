@@ -16,17 +16,20 @@ namespace MVC_Database.Models
 
         public List<Teacher> All()
         {
-            throw new NotImplementedException();
+            return _schoolDbContext.Teachers.ToList();
         }
 
         public Teacher Create(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _schoolDbContext.Teachers.Add(teacher);
+            _schoolDbContext.SaveChanges();
+
+            return teacher;
         }
 
         public Teacher Find(int id)
         {
-            throw new NotImplementedException();
+            return _schoolDbContext.Teachers.SingleOrDefault(teacher => teacher.Id == id);
         }
     }
 }

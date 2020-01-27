@@ -16,17 +16,23 @@ namespace MVC_Database.Models
 
         public List<Teacher> All()
         {
-            throw new NotImplementedException();
+            return _teacherRepository.All();
         }
 
         public Teacher Create(TeacherViewModel teacher)
         {
-            throw new NotImplementedException();
+            Teacher newTeacher = new Teacher
+            {
+                Name = teacher.Name,
+                Email = teacher.Email,
+                Office = teacher.Office
+            };
+            return _teacherRepository.Create(newTeacher);
         }
 
         public Teacher Find(int id)
         {
-            throw new NotImplementedException();
+            return _teacherRepository.Find(id);
         }
     }
 }

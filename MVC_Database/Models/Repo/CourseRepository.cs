@@ -16,17 +16,20 @@ namespace MVC_Database.Models
 
         public List<Course> All()
         {
-            throw new NotImplementedException();
+            return _schoolDbContext.Courses.ToList();
         }
 
         public Course Create(Course course)
         {
-            throw new NotImplementedException();
+            _schoolDbContext.Courses.Add(course);
+            _schoolDbContext.SaveChanges();
+
+            return course;
         }
 
         public Course Find(int id)
         {
-            throw new NotImplementedException();
+            return _schoolDbContext.Courses.SingleOrDefault(course => course.Id == id);
         }
     }
 }

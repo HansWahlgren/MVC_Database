@@ -16,17 +16,23 @@ namespace MVC_Database.Models
 
         public List<Assignment> All()
         {
-            throw new NotImplementedException();
+            return _assignmentRepository.All();
         }
 
         public Assignment Create(AssignmentViewModel assignment)
         {
-            throw new NotImplementedException();
+            Assignment newAssignment = new Assignment()
+            {
+                Title = assignment.Title,
+                Description = assignment.Description,
+                Course = assignment.Course
+            };
+            return _assignmentRepository.Create(newAssignment);
         }
 
         public Assignment Find(int id)
         {
-            throw new NotImplementedException();
+            return _assignmentRepository.Find(id);
         }
     }
 }

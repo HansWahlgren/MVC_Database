@@ -16,17 +16,23 @@ namespace MVC_Database.Models
 
         public List<Course> All()
         {
-            throw new NotImplementedException();
+            return _courseRepository.All();
         }
 
         public Course Create(CourseViewModel course)
         {
-            throw new NotImplementedException();
+            Course newCourse = new Course()
+            {
+                Title = course.Title,
+                Description = course.Description,
+                Teacher = course.Teacher
+            };
+            return _courseRepository.Create(newCourse);
         }
 
         public Course Find(int id)
         {
-            throw new NotImplementedException();
+            return _courseRepository.Find(id);
         }
     }
 }
