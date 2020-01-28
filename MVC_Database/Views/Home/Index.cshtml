@@ -1,7 +1,18 @@
-﻿
+﻿@model List<Course>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Courses</h1>
 
+@foreach (var course in Model)
+{
+    <div class="row">
+        <div class="col">
+            <p>@course.Title</p>
+        </div>
+        <div>
+            <a class="ViewCourse btn btn-primary" asp-action="ViewCourse" asp-route-id="@course.Id">View</a>
+        </div>
+    </div>
+}

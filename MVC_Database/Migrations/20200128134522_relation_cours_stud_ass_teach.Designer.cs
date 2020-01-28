@@ -4,14 +4,16 @@ using MVC_Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Database.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200128134522_relation_cours_stud_ass_teach")]
+    partial class relation_cours_stud_ass_teach
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,7 @@ namespace MVC_Database.Migrations
 
             modelBuilder.Entity("MVC_Database.Models.Course", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CourseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -66,7 +68,7 @@ namespace MVC_Database.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
-                    b.HasKey("Id");
+                    b.HasKey("CourseId");
 
                     b.HasIndex("TeacherId");
 
@@ -75,25 +77,29 @@ namespace MVC_Database.Migrations
 
             modelBuilder.Entity("MVC_Database.Models.PersonCourse", b =>
                 {
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentId", "CourseId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("PersonCourse");
                 });
 
             modelBuilder.Entity("MVC_Database.Models.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -108,7 +114,7 @@ namespace MVC_Database.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentId");
 
                     b.ToTable("Students");
                 });

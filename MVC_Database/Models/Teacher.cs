@@ -22,5 +22,7 @@ namespace MVC_Database.Models
         [Required]
         [StringLength(60, MinimumLength = 2)]
         public string Office { get; set; }
+
+        public List<Course> Courses { get; set; }
     }
 }

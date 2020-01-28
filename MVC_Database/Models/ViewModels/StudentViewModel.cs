@@ -15,5 +15,7 @@ namespace MVC_Database.Models
         [Required(ErrorMessage = "Must have a Email")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Email must be between 2 to 60 letters long")]
         public string Email { get; set; }
+
+        public List<PersonCourse> PersonCourses { get; set; }
     }
 }

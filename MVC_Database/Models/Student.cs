@@ -18,5 +18,7 @@ namespace MVC_Database.Models
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string Email { get; set; }
+
+        public List<PersonCourse> PersonCourses { get; set; }
     }
 }

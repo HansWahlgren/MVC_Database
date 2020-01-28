@@ -19,6 +19,10 @@ namespace MVC_Database.Models
         [StringLength(300, MinimumLength = 10)]
         public string Description { get; set; }
 
-        public int Teacher { get; set; }
+        public Teacher Teacher { get; set; }
+
+        public List<Assignment> Assignments { get; set; }
+
+        public List<PersonCourse> PersonCourses { get; set; }
     }
 }

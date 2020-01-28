@@ -6,19 +6,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVC_Database.Models
 {
-    public class Assignment
+    public class PersonCourse
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(60, MinimumLength = 1)]
-        public string Title { get; set; }
+        public int StudentId { get; set; }
+        [Required]
+        public Student Student { get; set; }
 
         [Required]
-        [StringLength(300, MinimumLength = 10)]
-        public string Description { get; set; }
-
+        public int CourseId { get; set; }
+        [Required]
         public Course Course { get; set; }
     }
 }

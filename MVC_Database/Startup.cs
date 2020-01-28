@@ -60,6 +60,12 @@ namespace MVC_Database
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("CreateRoute", "Create",
+                      defaults: new { controller = "Create", action = "Index" });
+
+                endpoints.MapControllerRoute("AssignRoute", "Assign",
+                      defaults: new { controller = "Assign", action = "Index" });
+
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=Home}/{action=Index}/{id?}");

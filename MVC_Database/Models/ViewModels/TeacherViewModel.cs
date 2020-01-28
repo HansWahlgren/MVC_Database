@@ -19,5 +19,7 @@ namespace MVC_Database.Models
         [Required(ErrorMessage = "Must have a Office")]
         [StringLength(60, MinimumLength = 2, ErrorMessage = "Office must be between 2 to 60 letters long")]
         public string Office { get; set; }
+
+        public List<Course> Courses { get; set; }
     }
 }
