@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +30,11 @@ namespace MVC_Database.Models
 
         public Course Find(int id)
         {
-            return _schoolDbContext.Courses.SingleOrDefault(course => course.Id == id);
+            return _schoolDbContext.Courses
+                .Include(cource => cource.Teacher)
+                .Include(course => course.Assignments)
+                .Include(course => course.PersonCourses).ThenInclude(course => course.Student)
+                .SingleOrDefault(course => course.Id == id);
         }
     }
 }

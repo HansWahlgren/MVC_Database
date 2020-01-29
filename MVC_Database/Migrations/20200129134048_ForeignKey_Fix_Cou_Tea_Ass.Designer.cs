@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Database.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20200127132114_init_School")]
-    partial class init_School
+    [Migration("20200129134048_ForeignKey_Fix_Cou_Tea_Ass")]
+    partial class ForeignKey_Fix_Cou_Tea_Ass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace MVC_Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Course")
+                    b.Property<int>("CourseForeignKey")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -41,6 +41,8 @@ namespace MVC_Database.Migrations
                         .HasMaxLength(60);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseForeignKey");
 
                     b.ToTable("Assignments");
                 });
@@ -57,7 +59,7 @@ namespace MVC_Database.Migrations
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
 
-                    b.Property<int>("Teacher")
+                    b.Property<int>("TeacherForeignKey")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -67,7 +69,27 @@ namespace MVC_Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TeacherForeignKey");
+
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("MVC_Database.Models.PersonCourse", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("PersonCourse");
                 });
 
             modelBuilder.Entity("MVC_Database.Models.Student", b =>
@@ -117,6 +139,39 @@ namespace MVC_Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("MVC_Database.Models.Assignment", b =>
+                {
+                    b.HasOne("MVC_Database.Models.Course", "Course")
+                        .WithMany("Assignments")
+                        .HasForeignKey("CourseForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MVC_Database.Models.Course", b =>
+                {
+                    b.HasOne("MVC_Database.Models.Teacher", "Teacher")
+                        .WithMany("Courses")
+                        .HasForeignKey("TeacherForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MVC_Database.Models.PersonCourse", b =>
+                {
+                    b.HasOne("MVC_Database.Models.Course", "Course")
+                        .WithMany("PersonCourses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MVC_Database.Models.Student", "Student")
+                        .WithMany("PersonCourses")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

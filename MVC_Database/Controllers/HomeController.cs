@@ -22,7 +22,9 @@ namespace MVC_Database.Controllers
 
         public IActionResult ViewCourse(int id)
         {
+            //Course cource = _courseService.Find(id);
             return View(_courseService.Find(id));
+
         }
     }
 }

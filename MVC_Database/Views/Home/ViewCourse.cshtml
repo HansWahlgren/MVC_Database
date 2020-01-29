@@ -6,5 +6,53 @@
 <h1>ViewCourse</h1>
 
 <div class="row">
-    <div class=""></div>
+    <div class="col">
+        <h5>Course Title</h5>
+    </div>
+    <div class="col">
+        <h5>Description</h5>
+    </div>
+    <div class="col">
+        <h5>Teacher</h5>
+    </div>
+    <div class="col">
+        <h5>Students</h5>
+    </div>
+    <div class="col">
+        <h5>Assignments</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>@Model.Title</p>
+    </div>
+    <div class="col">
+        <p>@Model.Description</p>
+    </div>
+    <div class="col">
+        <p>@Model.Teacher.Name</p>
+        <p>@Model.Teacher.Office</p>
+        <p>@Model.Teacher.Email</p>
+    </div>
+    <div class="col">
+        @foreach (var student in Model.PersonCourses)
+        {
+            <p>@student.Student.Name</p>
+            <p>@student.Student.Email</p>
+            <hr />
+        }
+
+        @*<p>@Model.PersonCourses</p>*@
+    </div>
+    <div class="col">
+        @foreach (var assignment in Model.Assignments)
+        {
+            <p>@assignment.Title</p>
+            <p>@assignment.Description</p>
+            <hr />
+        }
+
+        @*<p>@Model.Assignments</p>*@
+    </div>
 </div>
