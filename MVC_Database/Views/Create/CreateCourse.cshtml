@@ -1,0 +1,21 @@
+﻿@model CourseViewModel
+@{
+    ViewData["Title"] = "CreateCourse";
+}
+
+<h1>Create Course</h1>
+
+<form asp-action="CreateCourse" asp-controller="Create" method="post">
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+    <span asp-validation-for="Title"></span>
+    <br />
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" />
+    <span asp-validation-for="Description"></span>
+    <br />
+
+    <input type="submit" value="Create" />
+</form>
