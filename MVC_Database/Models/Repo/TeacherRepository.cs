@@ -31,5 +31,12 @@ namespace MVC_Database.Models
         {
             return _schoolDbContext.Teachers.SingleOrDefault(teacher => teacher.Id == id);
         }
+
+        public Teacher Assign(int teaId, int couId)
+        {
+
+
+            return Find(teaId);
+        }
     }
 }

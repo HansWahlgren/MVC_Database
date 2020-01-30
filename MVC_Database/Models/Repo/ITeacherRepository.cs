@@ -10,5 +10,6 @@ namespace MVC_Database.Models
         Teacher Create(Teacher teacher);
         Teacher Find(int id);
         List<Teacher> All();
+        Teacher Assign(int teaId, int couId);
     }
 }

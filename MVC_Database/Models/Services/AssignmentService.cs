@@ -34,5 +34,10 @@ namespace MVC_Database.Models
         {
             return _assignmentRepository.Find(id);
         }
+
+        public Assignment Assign(int assId, int couId)
+        {
+            return _assignmentRepository.Assign(assId, couId);
+        }
     }
 }

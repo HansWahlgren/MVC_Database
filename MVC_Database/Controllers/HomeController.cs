@@ -15,11 +15,13 @@ namespace MVC_Database.Controllers
             _courseService = courseService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View(_courseService.All());
         }
 
+        [HttpGet]
         public IActionResult ViewCourse(int id)
         {
             return View(_courseService.Find(id));

@@ -10,5 +10,6 @@ namespace MVC_Database.Models
         Assignment Create(Assignment assignment);
         Assignment Find(int id);
         List<Assignment> All();
+        Assignment Assign(int assId, int couId);
     }
 }

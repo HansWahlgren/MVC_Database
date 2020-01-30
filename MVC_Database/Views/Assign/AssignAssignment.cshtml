@@ -1,0 +1,21 @@
+﻿@model List<Assignment>
+@{
+    ViewData["Title"] = "AssignAssignment";
+}
+
+<h1>Assign Assignment</h1>
+
+@foreach (var assignment in Model)
+{
+    <div class="row">
+        <div class="col">
+            <p>@assignment.Title</p>
+        </div>
+        <div class="col">
+            <p>@assignment.Description</p>
+        </div>
+        <div>
+            <a class="SelectTeacher btn btn-primary" asp-action="SelectAssignment" asp-route-id="@assignment.Id">Confirm</a>
+        </div>
+    </div>
+}

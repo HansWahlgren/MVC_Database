@@ -10,5 +10,6 @@ namespace MVC_Database.Models
         Student Create(StudentViewModel student);
         Student Find(int id);
         List<Student> All();
+        Student Assign(int stuId, int couId);
     }
 }

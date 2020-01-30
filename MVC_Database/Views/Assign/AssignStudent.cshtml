@@ -1,0 +1,21 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "AssignStudent";
+}
+
+<h1>Assign Student</h1>
+
+@foreach (var student in Model)
+{
+    <div class="row">
+        <div class="col">
+            <p>@student.Name</p>
+        </div>
+        <div class="col">
+            <p>@student.Email</p>
+        </div>
+        <div>
+            <a class="SelectStudent btn btn-primary" asp-action="SelectStudent" asp-route-id="@student.Id">Confirm</a>
+        </div>
+    </div>
+}

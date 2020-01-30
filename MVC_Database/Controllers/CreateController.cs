@@ -77,6 +77,10 @@ namespace MVC_Database.Controllers
         {
             if (ModelState.IsValid)
             {
+                //CHEAT
+                courseViewModel.Teacher = _teacherService.Find(4);
+                //CHEAT
+
                 _courseService.Create(courseViewModel);
                 return RedirectToAction("Index");
             }
@@ -96,6 +100,10 @@ namespace MVC_Database.Controllers
         {
             if (ModelState.IsValid)
             {
+                // CHEAT
+                assignmentViewModel.Course = _courseService.Find(8);
+                //CHEAT
+
                 _assignmentService.Create(assignmentViewModel);
                 return RedirectToAction("Index");
             }
