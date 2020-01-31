@@ -5,17 +5,30 @@
 
 <h1>Assign Student</h1>
 
-@foreach (var student in Model)
-{
-    <div class="row">
-        <div class="col">
-            <p>@student.Name</p>
+<form asp-action="AssignStudent" asp-controller="Assign" method="post">
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Students</legend>
+            <div class="col-sm-10">
+                @foreach (Student student in Model)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="stuId" id="gridStudent @student.Id" value="@student.Id">
+                        <label class="form-check-label" for="gridStudent @student.Id">
+                            @student.Name
+                        </label>
+                    </div>
+                }
+                <div id="coursePartial"></div>
+            </div>
         </div>
-        <div class="col">
-            <p>@student.Email</p>
-        </div>
-        <div>
-            <a class="SelectStudent btn btn-primary" asp-action="SelectStudent" asp-route-id="@student.Id">Confirm</a>
+    </fieldset>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
     </div>
-}
+</form>
+@*<script>CreatePartial()</script>*@
+
+

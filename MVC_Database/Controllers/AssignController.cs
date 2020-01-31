@@ -25,24 +25,19 @@ namespace MVC_Database.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(_courseService.All());
-        }
-
-        [HttpGet]
-        public IActionResult AssignToCourse(int id)
-        {
-            return View(id);
+            return View();
+            //return View(_courseService.All());
         }
 
 
         [HttpGet]
-        public IActionResult AssignStudent(int id)
+        public IActionResult AssignStudent()
         {
             return View(_studentService.All());
         }
 
-        [HttpGet]
-        public IActionResult SelectStudent(int id)
+        [HttpPost]
+        public IActionResult AssignStudent(int stuId, int couId)
         {
             //_studentService.Assign(id, courseId);
 
@@ -57,8 +52,8 @@ namespace MVC_Database.Controllers
             return View(_teacherService.All());
         }
 
-        [HttpGet]
-        public IActionResult SelectTeacher(int id)
+        [HttpPost]
+        public IActionResult SelectTeacher()
         {
             //_teacherService.Assign(id, courseId);
 
@@ -73,12 +68,19 @@ namespace MVC_Database.Controllers
             return View(_assignmentService.All());
         }
 
-        [HttpGet]
-        public IActionResult SelectAssignment(int id)
+        [HttpPost]
+        public IActionResult SelectAssignment()
         {
             //_assignmentService.Assign(id, courseId);
 
             return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult CreateCoursePartial()
+        {
+            return PartialView("_SelectCourse", _courseService.All());
         }
     }
 }

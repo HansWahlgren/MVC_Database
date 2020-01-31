@@ -1,11 +1,22 @@
-﻿@model List<Course>
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
 <h1>Assign</h1>
 
-@foreach (var course in Model)
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary" asp-action="AssignStudent" >Assign Student</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-primary" asp-action="AssignTeacher" >Assign Teacher</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-primary" asp-action="AssignAssignment" >Assign Assignment</a>
+    </div>
+</div>
+
+@*@foreach (var course in Model)
 {
 <div class="row">
     <div class="col">
@@ -18,4 +29,4 @@
         <a class="SelectCourse btn btn-primary" asp-action="AssignToCourse" asp-route-id="@course.Id">Select</a>
     </div>
 </div>
-}
+}*@

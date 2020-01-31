@@ -5,20 +5,36 @@
 
 <h1>Assign Teacher</h1>
 
+<form asp-action="CreateStudent" asp-controller="Create" method="post">
+    <select class="custom-select custom-select-lg mb-3">
+        <option selected>Course menu</option>
+
+
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+
+    </select>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+
+
+
 @foreach (var teacher in Model)
 {
-<div class="row">
-    <div class="col">
-        <p>@teacher.Name</p>
+    <div class="row">
+        <div class="col">
+            <p>@teacher.Name</p>
+        </div>
+        <div class="col">
+            <p>@teacher.Email</p>
+        </div>
+        <div class="col">
+            <p>@teacher.Office</p>
+        </div>
+        <div>
+            <a class="SelectTeacher btn btn-primary" asp-action="SelectTeacher" asp-route-id="@teacher.Id">Confirm</a>
+        </div>
     </div>
-    <div class="col">
-        <p>@teacher.Email</p>
-    </div>
-    <div class="col">
-        <p>@teacher.Office</p>
-    </div>
-    <div>
-        <a class="SelectTeacher btn btn-primary" asp-action="SelectTeacher" asp-route-id="@teacher.Id">Confirm</a>
-    </div>
-</div>
 }

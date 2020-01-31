@@ -1,0 +1,12 @@
+﻿@model List<Course>
+
+
+@foreach (Course course in Model)
+{
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="couId" id="gridCourse @course.Id" value="@course.Id">
+        <label class="form-check-label" for="gridCourse @course.Id">
+            @course.Title
+        </label>
+    </div>
+}
