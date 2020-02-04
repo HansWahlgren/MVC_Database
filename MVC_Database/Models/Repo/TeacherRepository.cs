@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC_Database.Models
 {
@@ -34,7 +35,10 @@ namespace MVC_Database.Models
 
         public Teacher Assign(int teaId, int couId)
         {
-
+            Course course = _schoolDbContext.Courses.SingleOrDefault(c => c.Id == couId);
+            var teacher = Find(teaId);
+            course.Teacher = teacher;
+            _schoolDbContext.SaveChanges();
 
             return Find(teaId);
         }

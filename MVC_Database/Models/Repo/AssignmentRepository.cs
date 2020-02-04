@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +35,37 @@ namespace MVC_Database.Models
 
         public Assignment Assign(int assId, int couId)
         {
+            ///////// WITH TRACKING /////////
+            Course course = _schoolDbContext.Courses.SingleOrDefault(c => c.Id == couId);
+            var assignment = Find(assId);
+            assignment.Course = course;
+            _schoolDbContext.SaveChanges();
 
+
+            /////// WITH SQL DATA /////////
+            //_schoolDbContext.Database.ExecuteSqlRaw(
+            //$"Update dbo.Assignments SET CourseForeignKey = {course} WHERE Id = {assId}");
+
+            //var saved = false;
+            //while (!saved)
+            //{
+            //    try
+            //    {
+            //        // Attempt to save changes to the database
+            //        _schoolDbContext.SaveChanges();
+            //        saved = true;
+            //    }
+            //    catch (DbUpdateConcurrencyException failure)
+            //    {
+            //        foreach (var entry in failure.Entries)
+            //        {
+            //            if (entry.Entity is Assignment)
+            //            {
+            //                entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+            //            }
+            //        }
+            //    }
+            //}
 
             return Find(assId);
         }

@@ -1,21 +1,49 @@
-﻿@model List<Assignment>
+﻿@model AssignViewModel
 @{
     ViewData["Title"] = "AssignAssignment";
 }
 
 <h1>Assign Assignment</h1>
+<br />
 
-@foreach (var assignment in Model)
-{
-    <div class="row">
-        <div class="col">
-            <p>@assignment.Title</p>
+<form asp-action="AssignAssignment" asp-controller="Assign" method="post">
+    <fieldset class="form-group">
+        <div class="row">
+            @*<legend class="col-form-label col-sm-2 pt-0"></legend>*@
+            <div class="col-sm-10">
+                <h4>Assignments</h4>
+                @foreach (Assignment assignment in Model.AssignmentList)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assId" id="gridAssignment @assignment.Id" value="@assignment.Id">
+                        <label class="form-check-label" for="gridAssignment @assignment.Id">
+                            @assignment.Title
+                        </label>
+                    </div>
+                }
+            </div>
         </div>
-        <div class="col">
-            <p>@assignment.Description</p>
+        <br />
+        <div class="row">
+            @*<legend class="col-form-label col-sm-2 pt-0">Courses</legend>*@
+            <div class="col-sm-10">
+                <h4>Courses</h4>
+                @foreach (Course course in Model.CourseList)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="couId" id="gridCourse @course.Id" value="@course.Id">
+                        <label class="form-check-label" for="gridCourse @course.Id">
+                            @course.Title
+                        </label>
+                    </div>
+                }
+            </div>
         </div>
-        <div>
-            <a class="SelectTeacher btn btn-primary" asp-action="SelectAssignment" asp-route-id="@assignment.Id">Confirm</a>
+    </fieldset>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Confirm</button>
         </div>
     </div>
-}
+</form>

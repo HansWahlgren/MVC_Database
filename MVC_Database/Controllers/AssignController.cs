@@ -26,21 +26,23 @@ namespace MVC_Database.Controllers
         public IActionResult Index()
         {
             return View();
-            //return View(_courseService.All());
         }
 
 
         [HttpGet]
         public IActionResult AssignStudent()
         {
-            return View(_studentService.All());
+            List<Student> students = _studentService.All();
+            List<Course> courses = _courseService.All();
+            var model = new AssignViewModel { StudentList = students, CourseList = courses };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult AssignStudent(int stuId, int couId)
         {
-            //_studentService.Assign(id, courseId);
-
+            _studentService.Assign(stuId, couId);
             return RedirectToAction("Index");
         }
 
@@ -49,14 +51,17 @@ namespace MVC_Database.Controllers
         [HttpGet]
         public IActionResult AssignTeacher()
         {
-            return View(_teacherService.All());
+            List<Teacher> teachers = _teacherService.All();
+            List<Course> courses = _courseService.All();
+            var model = new AssignViewModel { TeacherList = teachers, CourseList = courses };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult SelectTeacher()
+        public IActionResult AssignTeacher(int teaId, int couId)
         {
-            //_teacherService.Assign(id, courseId);
-
+            _teacherService.Assign(teaId, couId);
             return RedirectToAction("Index");
         }
 
@@ -65,22 +70,25 @@ namespace MVC_Database.Controllers
         [HttpGet]
         public IActionResult AssignAssignment()
         {
-            return View(_assignmentService.All());
+            List<Assignment> assignments = _assignmentService.All();
+            List<Course> courses = _courseService.All();
+            var model = new AssignViewModel { AssignmentList = assignments, CourseList = courses };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult SelectAssignment()
+        public IActionResult AssignAssignment(int assId, int couId)
         {
-            //_assignmentService.Assign(id, courseId);
-
+            _assignmentService.Assign(assId, couId);
             return RedirectToAction("Index");
         }
 
 
-        [HttpGet]
-        public IActionResult CreateCoursePartial()
-        {
-            return PartialView("_SelectCourse", _courseService.All());
-        }
+        //[HttpGet]
+        //public IActionResult CreateCoursePartial()
+        //{
+        //    return PartialView("_SelectCourse", _courseService.All());
+        //}
     }
 }
