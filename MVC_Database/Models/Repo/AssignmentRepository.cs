@@ -30,7 +30,9 @@ namespace MVC_Database.Models
 
         public Assignment Find(int id)
         {
-            return _schoolDbContext.Assignments.SingleOrDefault(assignment => assignment.Id == id);
+            return _schoolDbContext.Assignments
+                .Include(assignment => assignment.Course)
+                .SingleOrDefault(assignment => assignment.Id == id);
         }
 
         public Assignment Assign(int assId, int couId)

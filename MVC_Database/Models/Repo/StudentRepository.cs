@@ -35,11 +35,13 @@ namespace MVC_Database.Models
                 .SingleOrDefault(student => student.Id == id);
         }
 
-        public Student Assign(PersonCourse personCourse)
+        public Student Assign(int stuId, int couId)
         {
             //_schoolDbContext.PersonCourse
+            //student.PersonCourses.
 
-            return Find(personCourse.StudentId);
+
+            return Find(stuId);
         }
     }
 }

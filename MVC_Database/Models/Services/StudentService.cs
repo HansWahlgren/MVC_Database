@@ -46,13 +46,15 @@ namespace MVC_Database.Models
                 }
             }
 
-            PersonCourse personCourse = new PersonCourse
-            {
-                CourseId = couId,
-                StudentId = stuId
-            };
+            //PersonCourse personCourse = new PersonCourse
+            //{
+            //    CourseId = couId,
+            //    StudentId = stuId
+            //};
 
-            return _studentRepository.Assign(personCourse);
+            //return _studentRepository.Assign(personCourse);
+
+            return _studentRepository.Assign(stuId, couId);
         }
     }
 }
