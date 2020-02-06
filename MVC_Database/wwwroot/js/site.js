@@ -8,7 +8,7 @@
 //});
 
 //function CreatePartial() {
-//    $.get("Assign/CreateCoursePartial", function (data, status) {
+//    $.get("Assign/CoursePartial", function (data, status) {
 //        $("#coursePartial").html(data);
 //    });
 //}

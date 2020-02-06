@@ -30,14 +30,16 @@ namespace MVC_Database.Models
 
         public Student Find(int id)
         {
-            return _schoolDbContext.Students.SingleOrDefault(student => student.Id == id);
+            return _schoolDbContext.Students
+                .Include(student => student.PersonCourses).ThenInclude(student => student.Course)
+                .SingleOrDefault(student => student.Id == id);
         }
 
-        public Student Assign(int stuId, int couId)
+        public Student Assign(PersonCourse personCourse)
         {
+            //_schoolDbContext.PersonCourse
 
-
-            return Find(stuId);
+            return Find(personCourse.StudentId);
         }
     }
 }

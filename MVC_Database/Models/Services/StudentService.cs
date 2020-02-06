@@ -36,7 +36,23 @@ namespace MVC_Database.Models
 
         public Student Assign(int stuId, int couId)
         {
-            return _studentRepository.Assign(stuId, couId);
+            Student student = Find(stuId);
+
+            foreach (var course in student.PersonCourses)
+            {
+                if (course.Course.Id == couId)
+                {
+                    return student;
+                }
+            }
+
+            PersonCourse personCourse = new PersonCourse
+            {
+                CourseId = couId,
+                StudentId = stuId
+            };
+
+            return _studentRepository.Assign(personCourse);
         }
     }
 }

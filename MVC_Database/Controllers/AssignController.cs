@@ -86,7 +86,7 @@ namespace MVC_Database.Controllers
 
 
         //[HttpGet]
-        //public IActionResult CreateCoursePartial()
+        //public IActionResult CoursePartial()
         //{
         //    return PartialView("_SelectCourse", _courseService.All());
         //}
