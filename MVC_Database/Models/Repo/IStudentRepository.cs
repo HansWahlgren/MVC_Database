@@ -10,7 +10,7 @@ namespace MVC_Database.Models
         Student Create(Student student);
         Student Find(int id);
         List<Student> All();
-        //Student Assign(PersonCourse personCourse);
-        Student Assign(int stuId, int couId);
+        Student Assign(PersonCourse personCourse);
+        //Student Assign(int stuId, int couId);
     }
 }
