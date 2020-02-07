@@ -1,4 +1,5 @@
-﻿@model CourseViewModel
+﻿@*@model CreateViewModel*@
+@model CourseViewModel
 @{
     ViewData["Title"] = "CreateCourse";
 }
@@ -16,8 +17,6 @@
     <input asp-for="Description" />
     <span asp-validation-for="Description"></span>
     <br />
-
-    @*SELECT TEACHER*@
 
     <input type="submit" value="Create" />
 </form>

@@ -69,6 +69,11 @@ namespace MVC_Database.Controllers
         [HttpGet]
         public IActionResult CreateCourse()
         {
+            //return View(_teacherService.All());
+            //CourseViewModel course = new CourseViewModel();
+            //List<Teacher> teachers = _teacherService.All();
+            //var model = new CreateViewModel { TeacherList = teachers, Course = course };
+
             return View();
         }
 
@@ -77,16 +82,28 @@ namespace MVC_Database.Controllers
         {
             if (ModelState.IsValid)
             {
-                //CHEAT
-                courseViewModel.Teacher = _teacherService.Find(4);
-                //CHEAT
+                courseViewModel.Teacher = _teacherService.Find(1);
 
                 _courseService.Create(courseViewModel);
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("AssignTeacher", "Assign");
             }
 
             return View(courseViewModel);
         }
+
+        //[HttpPost]
+        //public IActionResult SelectTeacher(CourseViewModel courseViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        List<Teacher> teachers = _teacherService.All();
+        //        var model = new CreateViewModel { TeacherList = teachers, Course = courseViewModel };
+        //        return View(model);
+        //    }
+        //    return View(courseViewModel);
+        //}
+
 
 
         [HttpGet]
@@ -101,11 +118,11 @@ namespace MVC_Database.Controllers
             if (ModelState.IsValid)
             {
                 // CHEAT
-                assignmentViewModel.Course = _courseService.Find(8);
+                assignmentViewModel.Course = _courseService.Find(2);
                 //CHEAT
 
                 _assignmentService.Create(assignmentViewModel);
-                return RedirectToAction("Index");
+                return RedirectToAction("AssignAssignment", "Assign");
             }
 
             return View(assignmentViewModel);

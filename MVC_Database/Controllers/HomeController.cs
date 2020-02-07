@@ -10,9 +10,11 @@ namespace MVC_Database.Controllers
     public class HomeController : Controller
     {
         readonly ICourseService _courseService;
-        public HomeController(ICourseService courseService)
+        readonly IStudentService _studentService;
+        public HomeController(ICourseService courseService, IStudentService studentService)
         {
             _courseService = courseService;
+            _studentService = studentService;
         }
 
         [HttpGet]
@@ -25,6 +27,19 @@ namespace MVC_Database.Controllers
         public IActionResult ViewCourse(int id)
         {
             return View(_courseService.Find(id));
+        }
+
+
+        [HttpGet]
+        public IActionResult StudentList()
+        {
+            return View(_studentService.All());
+        }
+
+        [HttpGet]
+        public IActionResult ViewStudent(int id)
+        {
+            return View(_studentService.Find(id));
         }
     }
 }

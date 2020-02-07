@@ -1,0 +1,23 @@
+﻿@model CreateViewModel
+@{
+    ViewData["Title"] = "SelectTeacher";
+}
+
+<h1>Select Teacher</h1>
+
+<form asp-action="SelectTeacher" asp-controller="Create" method="post">
+
+    @foreach (Teacher teacher in Model.TeacherList)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="teaId" id="gridTeacher @teacher.Id" value="@teacher.Id">
+            <label class="form-check-label" for="gridTeacher @teacher.Id">
+                @teacher.Name
+            </label>
+        </div>
+    }
+
+    <input type="hidden" value="@Model.Course." />
+
+    <input type="submit" value="Create" />
+</form>

@@ -16,17 +16,3 @@
     </div>
 </div>
 
-@*@foreach (var course in Model)
-{
-<div class="row">
-    <div class="col">
-        <p>@course.Title</p>
-    </div>
-    <div class="col">
-        <p>@course.Description</p>
-    </div>
-    <div>
-        <a class="SelectCourse btn btn-primary" asp-action="AssignToCourse" asp-route-id="@course.Id">Select</a>
-    </div>
-</div>
-}*@

@@ -40,13 +40,6 @@ namespace MVC_Database.Models
             Student student = Find(personCourse.StudentId);
             Course course = _schoolDbContext.Courses.SingleOrDefault(c => c.Id == personCourse.CourseId);
 
-            personCourse.Student = student;
-            personCourse.Course = course;
-
-            //student.PersonCourses.Add(personCourse);
-            //course.PersonCourses.Add(personCourse);
-
-
             _schoolDbContext.PersonCourses.Add(personCourse);
             _schoolDbContext.SaveChanges();
 

@@ -1,0 +1,19 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "StudentList";
+}
+
+<h1>Students</h1>
+
+@foreach (var student in Model)
+{
+<div class="row">
+    <div class="col">
+        <p>@student.Name</p>
+    </div>
+    <div>
+        <a class="ViewCourse btn btn-primary" asp-action="ViewStudent" asp-route-id="@student.Id">View</a>
+    </div>
+</div>
+}
+

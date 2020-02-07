@@ -1,0 +1,37 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "ViewStudent";
+}
+
+<h1>ViewStudent</h1>
+
+<div class="row">
+    <div class="col">
+        <h5>Name</h5>
+    </div>
+    <div class="col">
+        <h5>Email</h5>
+    </div>
+    <div class="col">
+        <h5>Courses</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>@Model.Name</p>
+    </div>
+    <div class="col">
+        <p>@Model.Email</p>
+    </div>
+    <div class="col">
+        @foreach (var course in Model.PersonCourses)
+        {
+            <h6>Title:</h6>
+            <p>@course.Course.Title</p>
+            <h6>Email:</h6>
+            <p>@course.Course.Description</p>
+            <hr />
+        }
+    </div>
+</div>

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Database.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20200129135219_FK_Is_Optional")]
-    partial class FK_Is_Optional
+    [Migration("20200207111732_Database_fix")]
+    partial class Database_fix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,7 +89,7 @@ namespace MVC_Database.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("PersonCourse");
+                    b.ToTable("PersonCourses");
                 });
 
             modelBuilder.Entity("MVC_Database.Models.Student", b =>

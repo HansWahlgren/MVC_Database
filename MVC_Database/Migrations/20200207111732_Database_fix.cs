@@ -2,7 +2,7 @@
 
 namespace MVC_Database.Migrations
 {
-    public partial class ForeignKey_Fix_Cou_Tea_Ass : Migration
+    public partial class Database_fix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,7 @@ namespace MVC_Database.Migrations
                         column: x => x.TeacherForeignKey,
                         principalTable: "Teachers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,11 +74,11 @@ namespace MVC_Database.Migrations
                         column: x => x.CourseForeignKey,
                         principalTable: "Courses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonCourse",
+                name: "PersonCourses",
                 columns: table => new
                 {
                     StudentId = table.Column<int>(nullable: false),
@@ -87,15 +87,15 @@ namespace MVC_Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonCourse", x => new { x.StudentId, x.CourseId });
+                    table.PrimaryKey("PK_PersonCourses", x => new { x.StudentId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_PersonCourse_Courses_CourseId",
+                        name: "FK_PersonCourses_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonCourse_Students_StudentId",
+                        name: "FK_PersonCourses_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
@@ -113,8 +113,8 @@ namespace MVC_Database.Migrations
                 column: "TeacherForeignKey");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonCourse_CourseId",
-                table: "PersonCourse",
+                name: "IX_PersonCourses_CourseId",
+                table: "PersonCourses",
                 column: "CourseId");
         }
 
@@ -124,7 +124,7 @@ namespace MVC_Database.Migrations
                 name: "Assignments");
 
             migrationBuilder.DropTable(
-                name: "PersonCourse");
+                name: "PersonCourses");
 
             migrationBuilder.DropTable(
                 name: "Courses");

@@ -42,7 +42,10 @@ namespace MVC_Database.Controllers
         [HttpPost]
         public IActionResult AssignStudent(int stuId, int couId)
         {
-            _studentService.Assign(stuId, couId);
+            if (stuId != 0 && couId != 0)
+            {
+                _studentService.Assign(stuId, couId);
+            }
             return RedirectToAction("Index");
         }
 
@@ -61,8 +64,12 @@ namespace MVC_Database.Controllers
         [HttpPost]
         public IActionResult AssignTeacher(int teaId, int couId)
         {
-            _teacherService.Assign(teaId, couId);
+            if (teaId != 0 && couId != 0)
+            {
+                _teacherService.Assign(teaId, couId);
+            }
             return RedirectToAction("Index");
+
         }
 
 
@@ -80,7 +87,10 @@ namespace MVC_Database.Controllers
         [HttpPost]
         public IActionResult AssignAssignment(int assId, int couId)
         {
-            _assignmentService.Assign(assId, couId);
+            if (assId != 0 && couId != 0)
+            {
+                _assignmentService.Assign(assId, couId);
+            }
             return RedirectToAction("Index");
         }
 
