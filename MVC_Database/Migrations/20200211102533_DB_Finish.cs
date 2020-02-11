@@ -2,7 +2,7 @@
 
 namespace MVC_Database.Migrations
 {
-    public partial class Database_fix : Migration
+    public partial class DB_Finish : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,14 +43,14 @@ namespace MVC_Database.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 60, nullable: false),
                     Description = table.Column<string>(maxLength: 300, nullable: false),
-                    TeacherForeignKey = table.Column<int>(nullable: false)
+                    TeacherId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Courses_Teachers_TeacherForeignKey",
-                        column: x => x.TeacherForeignKey,
+                        name: "FK_Courses_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -64,14 +64,14 @@ namespace MVC_Database.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 60, nullable: false),
                     Description = table.Column<string>(maxLength: 300, nullable: false),
-                    CourseForeignKey = table.Column<int>(nullable: false)
+                    CourseId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Assignments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Assignments_Courses_CourseForeignKey",
-                        column: x => x.CourseForeignKey,
+                        name: "FK_Assignments_Courses_CourseId",
+                        column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -103,14 +103,14 @@ namespace MVC_Database.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Assignments_CourseForeignKey",
+                name: "IX_Assignments_CourseId",
                 table: "Assignments",
-                column: "CourseForeignKey");
+                column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_TeacherForeignKey",
+                name: "IX_Courses_TeacherId",
                 table: "Courses",
-                column: "TeacherForeignKey");
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonCourses_CourseId",
