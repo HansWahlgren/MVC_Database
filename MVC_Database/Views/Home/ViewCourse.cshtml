@@ -31,33 +31,40 @@
         <p>@Model.Description</p>
     </div>
     <div class="col">
-        <h6>Name:</h6>
-        <p>@Model.Teacher.Name</p>
-        <h6>Office:</h6>
-        <p>@Model.Teacher.Office</p>
-        <h6>Email:</h6>
-        <p>@Model.Teacher.Email</p>
+        @if (Model.Teacher != null)
+        {
+            <h6>Name:</h6>
+            <p>@Model.Teacher.Name</p>
+            <h6>Office:</h6>
+            <p>@Model.Teacher.Office</p>
+            <h6>Email:</h6>
+            <p>@Model.Teacher.Email</p>
+        }
     </div>
     <div class="col">
         @foreach (var student in Model.PersonCourses)
         {
-            <h6>Name:</h6>
-            <p>@student.Student.Name</p>
-            <h6>Email:</h6>
-            <p>@student.Student.Email</p>
-            <hr />
+            @if (student.Student != null)
+            {
+                <h6>Name:</h6>
+                <p>@student.Student.Name</p>
+                <h6>Email:</h6>
+                <p>@student.Student.Email</p>
+                <hr />
+            }
         }
-
     </div>
     <div class="col">
-        @foreach (var assignment in Model.Assignments)
+        @if (Model.Assignments != null)
         {
-            <h6>Title:</h6>
-            <p>@assignment.Title</p>
-            <h6>Description:</h6>
-            <p>@assignment.Description</p>
-            <hr />
+            @foreach (var assignment in Model.Assignments)
+            {
+                <h6>Title:</h6>
+                <p>@assignment.Title</p>
+                <h6>Description:</h6>
+                <p>@assignment.Description</p>
+                <hr />
+            }
         }
-
     </div>
 </div>

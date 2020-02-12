@@ -27,11 +27,14 @@
     <div class="col">
         @foreach (var course in Model.PersonCourses)
         {
-            <h6>Title:</h6>
-            <p>@course.Course.Title</p>
-            <h6>Email:</h6>
-            <p>@course.Course.Description</p>
-            <hr />
+            @if (course.Course != null)
+            {
+                <h6>Title:</h6>
+                <p>@course.Course.Title</p>
+                <h6>Email:</h6>
+                <p>@course.Course.Description</p>
+                <hr />
+            }
         }
     </div>
 </div>
