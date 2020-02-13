@@ -7,6 +7,7 @@ using MVC_Database.Models;
 
 namespace MVC_Database.Controllers
 {
+    //Admin and Mods
     public class CreateController : Controller
     {
         readonly IStudentService _studentService;
@@ -46,13 +47,13 @@ namespace MVC_Database.Controllers
             return View(studentViewModel);
         }
 
-
+        //Admin
         [HttpGet]
         public IActionResult CreateTeacher()
         {
             return View();
         }
-
+        //Admin
         [HttpPost]
         public IActionResult CreateTeacher(TeacherViewModel teacherViewModel)
         {
@@ -65,7 +66,7 @@ namespace MVC_Database.Controllers
             return View(teacherViewModel);
         }
 
-
+        //Admin
         [HttpGet]
         public IActionResult CreateCourse()
         {
@@ -76,7 +77,7 @@ namespace MVC_Database.Controllers
 
             return View();
         }
-
+        //Admin
         [HttpPost]
         public IActionResult CreateCourse(CourseViewModel courseViewModel)
         {

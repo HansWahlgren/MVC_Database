@@ -7,6 +7,7 @@ using MVC_Database.Models;
 
 namespace MVC_Database.Controllers
 {
+    //User
     public class HomeController : Controller
     {
         readonly ICourseService _courseService;
@@ -16,7 +17,7 @@ namespace MVC_Database.Controllers
             _courseService = courseService;
             _studentService = studentService;
         }
-
+        //Allow Anonymous
         [HttpGet]
         public IActionResult Index()
         {

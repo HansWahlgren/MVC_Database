@@ -7,6 +7,7 @@ using MVC_Database.Models;
 
 namespace MVC_Database.Controllers
 {
+    //Admin & Mods
     public class AssignController : Controller
     {
         readonly IStudentService _studentService;
@@ -50,7 +51,7 @@ namespace MVC_Database.Controllers
         }
 
 
-
+        //Admin
         [HttpGet]
         public IActionResult AssignTeacher()
         {
@@ -60,7 +61,7 @@ namespace MVC_Database.Controllers
 
             return View(model);
         }
-
+        //Admin
         [HttpPost]
         public IActionResult AssignTeacher(int teaId, int couId)
         {
